@@ -18,6 +18,7 @@ export class SectionGenericComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
