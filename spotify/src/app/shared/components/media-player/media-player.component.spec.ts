@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MediaPlayerComponent } from './media-player.component';
 
@@ -6,12 +6,12 @@ describe('MediaPlayerComponent', () => {
   let component: MediaPlayerComponent;
   let fixture: ComponentFixture<MediaPlayerComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ MediaPlayerComponent ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MediaPlayerComponent);

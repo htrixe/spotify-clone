@@ -1,4 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TracksPageComponent } from './tracks-page.component';
 
@@ -6,12 +7,13 @@ describe('TracksPageComponent', () => {
   let component: TracksPageComponent;
   let fixture: ComponentFixture<TracksPageComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TracksPageComponent ]
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      declarations: [TracksPageComponent]
     })
-    .compileComponents();
-  }));
+      .compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TracksPageComponent);
