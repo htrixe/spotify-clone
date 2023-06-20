@@ -2,11 +2,15 @@ import { Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/co
 import { TrackModel } from '@core/models/tracks.model';
 import { MultimediaService } from '@shared/services/multimedia.service';
 import { Subscription } from 'rxjs'; //TODO: Programacion reactiva!
+import { NgTemplateOutlet, NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-media-player',
-  templateUrl: './media-player.component.html',
-  styleUrls: ['./media-player.component.css']
+    selector: 'app-media-player',
+    templateUrl: './media-player.component.html',
+    styleUrls: ['./media-player.component.css'],
+    standalone: true,
+    imports: [NgTemplateOutlet, NgIf, NgClass, AsyncPipe]
 })
 export class MediaPlayerComponent implements OnInit, OnDestroy {
   @ViewChild('progressBar') progressBar: ElementRef = new ElementRef('')
@@ -17,6 +21,7 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     const observer1$ = this.multimediaService.playerStatus$
+    .pipe(takeUntilDestroyed())
       .subscribe(status => this.state = status)
     this.listObservers$ = [observer1$]
   }
